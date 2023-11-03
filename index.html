@@ -1,0 +1,38 @@
+<!DOCTYPE html charset="utf-8">
+<html>
+    <head>
+        <script src="vendor/dhxs/dhtmlxscheduler.js" ></script>
+        <link rel="stylesheet" href="vendor/dhxs/dhtmlxscheduler_material.css" type="text/css" charset="utf-8">
+    </head>
+    <body>
+        <div id="scheduler_here" class="dhx_cal_container" style='width:100%; height:100vh;'>
+            <div class="dhx_cal_navline">
+                <div class="dhx_cal_prev_button">&nbsp;</div>
+                <div class="dhx_cal_next_button">&nbsp;</div>
+                <div class="dhx_cal_today_button"></div>
+                <div class="dhx_cal_date"></div>
+                <div class="dhx_cal_tab" data-tab="day"></div>
+                <div class="dhx_cal_tab" data-tab="week"></div>
+                <div class="dhx_cal_tab" data-tab="month"></div>
+            </div>
+            <div class="dhx_cal_header"></div>
+            <div class="dhx_cal_data"></div>
+        </div>
+        <script>
+            scheduler.config.first_hour = 6;
+            scheduler.config.last_hour = 19;
+            scheduler.init('scheduler_here', new Date(2019, 3, 20), "week");
+            scheduler.plugins({
+                serialize: true
+            });
+            scheduler.parse([
+                { id:1, start_date: "2019-04-15 09:00", end_date: "2019-04-15 12:00", text:"English lesson" },
+                { id:2, start_date: "2019-04-16 10:00", end_date: "2019-04-16 16:00", text:"Math exam" },
+                { id:3, start_date: "2019-04-16 10:00", end_date: "2019-04-21 16:00", text:"Science lesson" },
+                { id:4, start_date: "2019-04-17 16:00", end_date: "2019-04-17 17:00", text:"English lesson" },
+                { id:5, start_date: "2019-04-18 09:00", end_date: "2019-04-18 17:00", text:"Usual event" }
+            ]);
+            console.log(scheduler.toICal('Gran Calendario'));            
+        </script>
+    </body>
+</html>
